@@ -1,5 +1,5 @@
 ## Titulo do projeto
-<h1 align="center">Vaga Backend Developer JR - Zenvia</h1>
+<h1 align="center">Vaga Developer JR - Zenvia</h1>
 
 ## Tópicos
 [Descrição do projeto](#descricao)<br>
@@ -7,7 +7,6 @@
 [Pré-requisitos](#prerequisitos)<br>
 [Como rodar a aplicação](#comorodar)<br>
 [Comandos SQL](#comandossql)<br>
-[Como utilizar o token](#token)<br>
 [Rotas da aplicação](#rotas)<br>
 
 ## Descrição do Projeto
@@ -18,13 +17,10 @@
 
 ## Status do Projeto: Concluido :heavy_check_mark:
 
-<!-- <img src="https://img.shields.io/static/v1?label=node&message=framework&color=blue&style=for-the-badge&logo=NODE"/> -->
-
 ## O que a plataforma é capaz de fazer :checkered_flag:
 
-<p name="Oquefaz">:trophy: Criar seus próprios times.</p>
-<p>:trophy: Criar seus próprios jogos utilizando esses times.</p>
-<p>:trophy: Acompanhar a tabela de classificação.</p>
+<p name="Oquefaz">:trophy: Criar diversas partidas de Jokenpo.</p>
+<p name="Oquefaz">:trophy: Utilizar testes unitários.</p>
 
 ## Pré-requisitos
 <a href="https://nodejs.org/en/download/" rel="nofollow" name="prerequisitos">
@@ -117,7 +113,7 @@
 
 <pre>
   <code>
-    "create database airfluencers;"
+    "create database zenvia;"
   </code>
 </pre>
 
@@ -131,7 +127,7 @@
 
 <pre>
   <code>
-    "git clone https://github.com/Kenzo13/vaga-backend-jr.git"
+    "git clone https://github.com/Kenzo13/Zenvia.git"
   </code>
 </pre>
 
@@ -141,7 +137,7 @@
 
 <pre>
   <code>
-    "cd pasta vaga-backend-jr/"
+    "cd pasta Zenvia/"
   </code>
 </pre>
 
@@ -168,217 +164,107 @@
 ## Comandos SQL
 
 <p name="comandossql">
-  Comando para criar tabela clubs.
+  Comando para criar tabela jokenpo(tabela dos jogos).
 </p>
 
 <pre>
   <code>
-    "CREATE TABLE clubs(
+    "CREATE TABLE jokenpo(
       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      nameOfTeam VARCHAR(40) NOT NULL,
-      yearOfFoundation VARCHAR(10),
-      stateOfClub VARCHAR(20)
+      namePlayerOne VARCHAR(50) NOT NULL,
+      namePlayerTwo VARCHAR(50) NOT NULL,
+      playerOneHand VARCHAR(15) NOT NULL,
+      playerTwoHand VARCHAR(15) NOT NULL,
+      qtdPointsForPlayerOne INT,
+      qtdPointsForPlayerTwo INT,
+      result VARCHAR(60)
     );"
   </code>
 </pre>
 
 <p>
-  Comando para trazer os dados da tabela clubs.
+  Comando para trazer os dados da tabela jokenpo.
 </p>
 
 <pre>
   <code>
-    "SELECT * FROM clubs;"
+    "SELECT * FROM jokenpo;"
   </code>
 </pre>
 
 <p>
-  Comando para criar tabela games.
+  Comando para criar tabela hand(tabela essa que armazena os simbolos que o usuário
+  pode utilizar, como pedra, papel & tesoura).
 </p>
 
 <pre>
   <code>
-    "CREATE TABLE games (
-      id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-      nameOfTeamA varchar(20) NOT NULL,
-      nameOfTeamB varchar(20) NOT NULL,
-      golsFromTeamA INT NOT NULL,
-      golsFromTeamB INT NOT NULL,
-      scoreboard varchar(5) NOT NULL
-    );"
-  </code>
-</pre>
-
-<p>
-  Comando para trazer os dados da tabela games.
-</p>
-
-<pre>
-  <code>
-    "SELECT * FROM games;"
-  </code>
-</pre>
-
-<p>
-  Comando para criar tabela gamesPoints.
-</p>
-
-<pre>
-  <code>
-    "CREATE TABLE gamesPoints (
+    "CREATE TABLE hand(
       id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      idOfGame INT NOT NULL,
-      idOfTeamA INT NOT NULL,
-      idOfTeamB INT NOT NULL,
-      qtdPointsForTeamA INT NOT NULL,
-      qtdPointsForTeamB INT NOT NULL,
-      FOREIGN KEY (idOfGame) REFERENCES games(id),
-      FOREIGN KEY (idOfTeamA) REFERENCES clubs(id),
-      FOREIGN KEY (idOfTeamB) REFERENCES clubs(id)
+      symbol VARCHAR(15) NOT NULL
     );"
   </code>
 </pre>
 
 <p>
-  Comando para trazer os dados da tabela gamesPoints.
+  Comando para trazer os dados da tabela hand.
 </p>
 
 <pre>
   <code>
-    "SELECT * FROM gamesPoints;"
-  </code>
-</pre>
-
-
-<p>
-  Comando para criar a tabela users.
-</p>
-
-<pre>
-  <code>
-    "CREATE TABLE users(
-      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-      userName VARCHAR(50) NOT NULL,
-      email VARCHAR(255) NOT NULL,
-      userPassword VARCHAR(255) NOT NULL
-    );"
+    "SELECT * FROM hand;"
   </code>
 </pre>
 
 <p>
-  Comando para trazer os dados da tabela users.
+  Comando para gerar os dados necessários para a aplicação funcionar.
 </p>
 
 <pre>
   <code>
-    "SELECT * FROM users;"
+    "INSERT INTO hand(symbol) VALUES('pedra');"
+    "INSERT INTO hand(symbol) VALUES('papel');"
+    "INSERT INTO hand(symbol) VALUES('tesoura');"
   </code>
 </pre>
-
-## Como utilizar o token.
-
-<p name="token">
-  &nbsp;&nbsp;&nbsp;&nbsp; Para utilizar o token, você deve gerar a sessão. No insomnia você vai na aba "Auth" com o token copiado e seleciona a opção "Bearer Token", no campo "token" você coloca o mesmo.<br>
-  No postman é praticamente o mesmo método. Se precisar utilize a documentação do postman https://learning.postman.com/docs/postman/sending-api-requests/authorization/#bearer-token
-</p>
 
 ## Rotas da aplicação.
-<h1 name="rotas">OBS: Todas as rotas vão contar com um exemplo dos dados e formatos que devem ser enviados.</h1>
-<br>
-<br>
-
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;Para utilizar todas as rotas é necessário ter seguido os passos anteriores de criação do container
-  docker e a criação das tabelas no banco de dados.
-</p>
-
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;A primeira rota que você deve executar é a de cadastro de usuário
-  <b>routes.post('/users', UserController.create);</b><br> 
-  Essa rota vai criar um usuário para utilizar a aplicação.
-</p>
-
-<pre>
-  <code>
-    "
-      {
-        "name": "Raphael Kenzo",
-        "email": "raphaelkenzo2586@gmail.com",
-        "password": "123456"
-      }
-    "
-  </code>
-</pre>
-
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;A próxima rota que deve ser utilizada é a de criação de sessão
-  <b>routes.post('/sessions', SessionController.create);</b><br>
-  Essa rota vai autenticar o usuário e senha, para gerar o token e acessar as demais rotas.
-</p>
-
-<pre>
-  <code>
-    "
-      {
-        "email": "raphaelkenzo2586@gmail.com",
-        "password": "123456"
-      }
-    "
-  </code>
-</pre>
-
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;A próxima rota que deve ser utilizada é a de criação dos clubs
-  <b>routes.post('/clubs', middlewares.ensureAuthenticated, ClubController.create);</b><br>
-  Essa rota vai criar os clubs que vão disputar o campeonato.
-</p>
-
-<pre>
-  <code>
-    "
-      {
-        "name": "Palmeiras",
-        "yearOfFoundation": "25/01/1930",
-        "stateOfClub": "São Paulo"
-      }
-    "
-  </code>
-</pre>
-
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;Para verificar os dados do seu time e listar os mesmos, utilize a rota
-  <b>routes.get('/clubs', middlewares.ensureAuthenticated, ClubController.index);</b><br>
-</p>
-
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;Agora vamos utilizar a rota de criação de jogos
-  <b>routes.post('/games', middlewares.ensureAuthenticated, GameController.create);</b><br>
-  Essa rota vai criar os jogos entre os times que você cadastrou.
-</p>
-
-<pre>
-  <code>
-    "
-      {
-        "teamA": "São Paulo",
-        "teamB": "Santos",
-        "golsFromTeamA": 1,
-        "golsFromTeamB": 0
-      }
-    "
-  </code>
-</pre>
-
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;Para verificar os dados do seu jogo, utilize a rota
-  <b>routes.get('/games', middlewares.ensureAuthenticated, GameController.index);</b><br>
-</p>
-
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;Para verificar os dados do campeonato, utilize a rota
-  <b>routes.get('/table', middlewares.ensureAuthenticated, TableController.index);</b><br>
-</p>
-
-<h1>
-  OBS:Lembre-se de utilizar o token em todas as rotas com exceção da rota de criação de sessão e usuário.
+<h1 name="rotas">OBS: Todas as rotas vão contar com um exemplo dos dados e 
+  formatos que devem ser enviados.
 </h1>
+<br>
+<br>
+
+<p>
+  &nbsp;&nbsp;&nbsp;&nbsp;Para utilizar todas as rotas é necessário ter seguido os passos anteriores de criação do container docker e a criação das tabelas no banco de dados.
+</p>
+
+<p>
+  &nbsp;&nbsp;&nbsp;&nbsp;A primeira rota que você deve executar é a de criação de um jogo(jokenpo)
+  <b>routes.post('/jokenpo', GameController.create);</b><br> 
+  Essa rota vai criar um ou mais jogos de jokenpo.
+</p>
+
+<pre>
+  <code>
+    "
+      {
+        "namePlayerOne": "Teste1",
+        "namePlayerTwo": "Teste2",
+        "playerOneHand": "Papel",
+        "playerTwoHand": "Tesoura"
+      }
+    "
+  </code>
+</pre>
+
+<p>
+  &nbsp;&nbsp;&nbsp;&nbsp;A próxima rota que pode ser utilizada é a de listagem de jogos
+  <b>routes.get('/jokenpo', GameController.index);</b><br>
+  Essa rota vai listar todos os jogos que a aplicação teve até o momento.
+</p>
+
+<p>
+  &nbsp;&nbsp;&nbsp;&nbsp;Para utilizar os testes automatizados, 
+  basta escrever no console <b>"yarn test"</b>
+</p>
