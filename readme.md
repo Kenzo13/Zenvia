@@ -1,5 +1,5 @@
 ## Titulo do projeto
-<h1 align="center">Vaga Backend Developer JR - AIRFLUENCERS</h1>
+<h1 align="center">Vaga Backend Developer JR - Zenvia</h1>
 
 ## Tópicos
 [Descrição do projeto](#descricao)<br>
@@ -12,7 +12,8 @@
 
 ## Descrição do Projeto
 <p align="justify" name="descricao">
-  &nbsp;&nbsp;&nbsp;&nbsp;Desenvolver uma aplicação capaz de simular um campeonato de futebol,contendo 4 times.
+  &nbsp;&nbsp;&nbsp;&nbsp;Desenvolver uma aplicação capaz de simular uma partida
+  de Jokenpo entre duas pessoas.
 </p>
 
 ## Status do Projeto: Concluido :heavy_check_mark:
