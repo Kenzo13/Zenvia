@@ -71,7 +71,7 @@
 
 <pre>
   <code>
-    "sudo docker run --name airfluencers_mysql -e MYSQL_ROOT_PASSWORD=docker -p 3306:3306 -d mysql"
+    "sudo docker run --name zenvia_mysql -e MYSQL_ROOT_PASSWORD=docker -p 3306:3306 -d mysql"
   </code>
 </pre>
 
@@ -91,7 +91,7 @@
 
 <pre>
   <code>
-    "sudo docker exec -it airfluencers_mysql /bin/bash"
+    "sudo docker exec -it zenvia_mysql /bin/bash"
   </code>
 </pre>
 
@@ -264,7 +264,7 @@
   Essa rota vai listar todos os jogos que a aplicação teve até o momento.
 </p>
 
-<p>
-  &nbsp;&nbsp;&nbsp;&nbsp;Para utilizar os testes automatizados, 
+<h1>
+  &nbsp;&nbsp;&nbsp;&nbsp;<b>OBS:</b>Para utilizar os testes automatizados, 
   basta escrever no console <b>"yarn test"</b>
-</p>
+</h1>
