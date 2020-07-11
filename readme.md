@@ -264,7 +264,9 @@
   Essa rota vai listar todos os jogos que a aplicação teve até o momento.
 </p>
 
-<h1>
-  &nbsp;&nbsp;&nbsp;&nbsp;<b>OBS:</b>Para utilizar os testes automatizados, 
-  basta escrever no console <b>"yarn test"</b>
-</h1>
+<h1><b>OBS:</b></h1>
+<p>
+  Para utilizar os testes automatizados,basta escrever no console <b>"yarn test"</b>
+  deve ser retornado no seu console duas informações com um check verde, dizendo o seguinte
+  "Should be able to create a new Jokenpo Game " e "Should be able to list all Jokenpo Games".
+</p>
